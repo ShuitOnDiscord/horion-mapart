@@ -6,100 +6,100 @@ const prismarineNbt = require('prismarine-nbt');
 // we are importing java edition schematics, but we need bedrock edition blocks, so we have a map of java blocks to bedrock blocks
 // thank you so much github copilot for making this easy to do
 const javaToBedrock = {
-    'minecraft:white_concrete': 'minecraft:concrete 0', // white concrete
-    'minecraft:orange_concrete': 'minecraft:concrete 1', // orange concrete
-    'minecraft:magenta_concrete': 'minecraft:concrete 2', // magenta concrete
-    'minecraft:light_blue_concrete': 'minecraft:concrete 3', // light blue concrete
-    'minecraft:yellow_concrete': 'minecraft:concrete 4', // yellow concrete
-    'minecraft:lime_concrete': 'minecraft:concrete 5', // lime concrete
-    'minecraft:pink_concrete': 'minecraft:concrete 6', // pink concrete
-    'minecraft:gray_concrete': 'minecraft:concrete 7', // gray concrete
-    'minecraft:light_gray_concrete': 'minecraft:concrete 8', // light gray concrete
-    'minecraft:cyan_concrete': 'minecraft:concrete 9', // cyan concrete
-    'minecraft:purple_concrete': 'minecraft:concrete 10', // purple concrete
-    'minecraft:blue_concrete': 'minecraft:concrete 11', // blue concrete
-    'minecraft:brown_concrete': 'minecraft:concrete 12', // brown concrete
-    'minecraft:green_concrete': 'minecraft:concrete 13', // green concrete
-    'minecraft:red_concrete': 'minecraft:concrete 14', // red concrete
-    'minecraft:black_concrete': 'minecraft:concrete 15', // black concrete
+    'minecraft:white_concrete': 'concrete 0', // white concrete
+    'minecraft:orange_concrete': 'concrete 1', // orange concrete
+    'minecraft:magenta_concrete': 'concrete 2', // magenta concrete
+    'minecraft:light_blue_concrete': 'concrete 3', // light blue concrete
+    'minecraft:yellow_concrete': 'concrete 4', // yellow concrete
+    'minecraft:lime_concrete': 'concrete 5', // lime concrete
+    'minecraft:pink_concrete': 'concrete 6', // pink concrete
+    'minecraft:gray_concrete': 'concrete 7', // gray concrete
+    'minecraft:light_gray_concrete': 'concrete 8', // light gray concrete
+    'minecraft:cyan_concrete': 'concrete 9', // cyan concrete
+    'minecraft:purple_concrete': 'concrete 10', // purple concrete
+    'minecraft:blue_concrete': 'concrete 11', // blue concrete
+    'minecraft:brown_concrete': 'concrete 12', // brown concrete
+    'minecraft:green_concrete': 'concrete 13', // green concrete
+    'minecraft:red_concrete': 'concrete 14', // red concrete
+    'minecraft:black_concrete': 'concrete 15', // black concrete
     // wool colors
-    'minecraft:white_wool': 'minecraft:wool 0', // white wool
-    'minecraft:orange_wool': 'minecraft:wool 1', // orange wool
-    'minecraft:magenta_wool': 'minecraft:wool 2', // magenta wool
-    'minecraft:light_blue_wool': 'minecraft:wool 3', // light blue wool
-    'minecraft:yellow_wool': 'minecraft:wool 4', // yellow wool
-    'minecraft:lime_wool': 'minecraft:wool 5', // lime wool
-    'minecraft:pink_wool': 'minecraft:wool 6', // pink wool
-    'minecraft:gray_wool': 'minecraft:wool 7', // gray wool
-    'minecraft:light_gray_wool': 'minecraft:wool 8', // light gray wool
-    'minecraft:cyan_wool': 'minecraft:wool 9', // cyan wool
-    'minecraft:purple_wool': 'minecraft:wool 10', // purple wool
-    'minecraft:blue_wool': 'minecraft:wool 11', // blue wool
-    'minecraft:brown_wool': 'minecraft:wool 12', // brown wool
-    'minecraft:green_wool': 'minecraft:wool 13', // green wool
-    'minecraft:red_wool': 'minecraft:wool 14', // red wool
-    'minecraft:black_wool': 'minecraft:wool 15', // black wool
+    'minecraft:white_wool': 'wool 0', // white wool
+    'minecraft:orange_wool': 'wool 1', // orange wool
+    'minecraft:magenta_wool': 'wool 2', // magenta wool
+    'minecraft:light_blue_wool': 'wool 3', // light blue wool
+    'minecraft:yellow_wool': 'wool 4', // yellow wool
+    'minecraft:lime_wool': 'wool 5', // lime wool
+    'minecraft:pink_wool': 'wool 6', // pink wool
+    'minecraft:gray_wool': 'wool 7', // gray wool
+    'minecraft:light_gray_wool': 'wool 8', // light gray wool
+    'minecraft:cyan_wool': 'wool 9', // cyan wool
+    'minecraft:purple_wool': 'wool 10', // purple wool
+    'minecraft:blue_wool': 'wool 11', // blue wool
+    'minecraft:brown_wool': 'wool 12', // brown wool
+    'minecraft:green_wool': 'wool 13', // green wool
+    'minecraft:red_wool': 'wool 14', // red wool
+    'minecraft:black_wool': 'wool 15', // black wool
     // terracotta colors
-    'minecraft:white_terracotta': 'minecraft:stained_hardened_clay 0', // white terracotta
-    'minecraft:orange_terracotta': 'minecraft:stained_hardened_clay 1', // orange terracotta
-    'minecraft:magenta_terracotta': 'minecraft:stained_hardened_clay 2', // magenta terracotta
-    'minecraft:light_blue_terracotta': 'minecraft:stained_hardened_clay 3', // light blue terracotta
-    'minecraft:yellow_terracotta': 'minecraft:stained_hardened_clay 4', // yellow terracotta
-    'minecraft:lime_terracotta': 'minecraft:stained_hardened_clay 5', // lime terracotta
-    'minecraft:pink_terracotta': 'minecraft:stained_hardened_clay 6', // pink terracotta
-    'minecraft:gray_terracotta': 'minecraft:stained_hardened_clay 7', // gray terracotta
-    'minecraft:light_gray_terracotta': 'minecraft:stained_hardened_clay 8', // light gray terracotta
-    'minecraft:cyan_terracotta': 'minecraft:stained_hardened_clay 9', // cyan terracotta
-    'minecraft:purple_terracotta': 'minecraft:stained_hardened_clay 10', // purple terracotta
-    'minecraft:blue_terracotta': 'minecraft:stained_hardened_clay 11', // blue terracotta
-    'minecraft:brown_terracotta': 'minecraft:stained_hardened_clay 12', // brown terracotta
-    'minecraft:green_terracotta': 'minecraft:stained_hardened_clay 13', // green terracotta
-    'minecraft:red_terracotta': 'minecraft:stained_hardened_clay 14', // red terracotta
-    'minecraft:black_terracotta': 'minecraft:stained_hardened_clay 15', // black terracotta
+    'minecraft:white_terracotta': 'stained_hardened_clay 0', // white terracotta
+    'minecraft:orange_terracotta': 'stained_hardened_clay 1', // orange terracotta
+    'minecraft:magenta_terracotta': 'stained_hardened_clay 2', // magenta terracotta
+    'minecraft:light_blue_terracotta': 'stained_hardened_clay 3', // light blue terracotta
+    'minecraft:yellow_terracotta': 'stained_hardened_clay 4', // yellow terracotta
+    'minecraft:lime_terracotta': 'stained_hardened_clay 5', // lime terracotta
+    'minecraft:pink_terracotta': 'stained_hardened_clay 6', // pink terracotta
+    'minecraft:gray_terracotta': 'stained_hardened_clay 7', // gray terracotta
+    'minecraft:light_gray_terracotta': 'stained_hardened_clay 8', // light gray terracotta
+    'minecraft:cyan_terracotta': 'stained_hardened_clay 9', // cyan terracotta
+    'minecraft:purple_terracotta': 'stained_hardened_clay 10', // purple terracotta
+    'minecraft:blue_terracotta': 'stained_hardened_clay 11', // blue terracotta
+    'minecraft:brown_terracotta': 'stained_hardened_clay 12', // brown terracotta
+    'minecraft:green_terracotta': 'stained_hardened_clay 13', // green terracotta
+    'minecraft:red_terracotta': 'stained_hardened_clay 14', // red terracotta
+    'minecraft:black_terracotta': 'stained_hardened_clay 15', // black terracotta
     // logs
-    'minecraft:oak_log': 'minecraft:log 0', // oak logs
-    'minecraft:spruce_log': 'minecraft:log 1', // spruce logs
-    'minecraft:birch_log': 'minecraft:log 2', // birch logs
-    'minecraft:jungle_log': 'minecraft:log 3', // jungle logs
-    'minecraft:acacia_log': 'minecraft:log2', // acacia logs, for some very strange reason this is called log2, bedrock edition is weird
-    'minecraft:dark_oak_log': 'minecraft:log2 1', // dark oak logs, bedrock weird
+    'minecraft:oak_log': 'log 0', // oak logs
+    'minecraft:spruce_log': 'log 1', // spruce logs
+    'minecraft:birch_log': 'log 2', // birch logs
+    'minecraft:jungle_log': 'log 3', // jungle logs
+    'minecraft:acacia_log': 'log2', // acacia logs, for some very strange reason this is called log2, bedrock edition is weird
+    'minecraft:dark_oak_log': 'log2 1', // dark oak logs, bedrock weird
     // leaves
-    'minecraft:oak_leaves': 'minecraft:leaves 0', // oak leaves
-    'minecraft:spruce_leaves': 'minecraft:leaves 1', // spruce leaves
-    'minecraft:birch_leaves': 'minecraft:leaves 2', // birch leaves
-    'minecraft:jungle_leaves': 'minecraft:leaves 3', // jungle leaves
-    'minecraft:acacia_leaves': 'minecraft:leaves2', // acacia leaves, leaves2??
-    'minecraft:dark_oak_leaves': 'minecraft:leaves2 1', // dark oak leaves, leaves2??
+    'minecraft:oak_leaves': 'leaves 0', // oak leaves
+    'minecraft:spruce_leaves': 'leaves 1', // spruce leaves
+    'minecraft:birch_leaves': 'leaves 2', // birch leaves
+    'minecraft:jungle_leaves': 'leaves 3', // jungle leaves
+    'minecraft:acacia_leaves': 'leaves2', // acacia leaves, leaves2??
+    'minecraft:dark_oak_leaves': 'leaves2 1', // dark oak leaves, leaves2??
     // planks
-    'minecraft:oak_planks': 'minecraft:planks 0', // oak planks
-    'minecraft:spruce_planks': 'minecraft:planks 1', // spruce planks
-    'minecraft:birch_planks': 'minecraft:planks 2', // birch planks
-    'minecraft:jungle_planks': 'minecraft:planks 3', // jungle planks
-    'minecraft:acacia_planks': 'minecraft:planks 4', // acacia planks
-    'minecraft:dark_oak_planks': 'minecraft:planks 5', // dark oak planks
+    'minecraft:oak_planks': 'planks 0', // oak planks
+    'minecraft:spruce_planks': 'planks 1', // spruce planks
+    'minecraft:birch_planks': 'planks 2', // birch planks
+    'minecraft:jungle_planks': 'planks 3', // jungle planks
+    'minecraft:acacia_planks': 'planks 4', // acacia planks
+    'minecraft:dark_oak_planks': 'planks 5', // dark oak planks
     // carpet
-    'minecraft:white_carpet': 'minecraft:carpet 0', // white carpet
-    'minecraft:orange_carpet': 'minecraft:carpet 1', // orange carpet
-    'minecraft:magenta_carpet': 'minecraft:carpet 2', // magenta carpet
-    'minecraft:light_blue_carpet': 'minecraft:carpet 3', // light blue carpet
-    'minecraft:yellow_carpet': 'minecraft:carpet 4', // yellow carpet
-    'minecraft:lime_carpet': 'minecraft:carpet 5', // lime carpet
-    'minecraft:pink_carpet': 'minecraft:carpet 6', // pink carpet
-    'minecraft:gray_carpet': 'minecraft:carpet 7', // gray carpet
-    'minecraft:light_gray_carpet': 'minecraft:carpet 8', // light gray carpet
-    'minecraft:cyan_carpet': 'minecraft:carpet 9', // cyan carpet
-    'minecraft:purple_carpet': 'minecraft:carpet 10', // purple carpet
-    'minecraft:blue_carpet': 'minecraft:carpet 11', // blue carpet
-    'minecraft:brown_carpet': 'minecraft:carpet 12', // brown carpet
-    'minecraft:green_carpet': 'minecraft:carpet 13', // green carpet
-    'minecraft:red_carpet': 'minecraft:carpet 14', // red carpet
-    'minecraft:black_carpet': 'minecraft:carpet 15', // black carpet
+    'minecraft:white_carpet': 'carpet 0', // white carpet
+    'minecraft:orange_carpet': 'carpet 1', // orange carpet
+    'minecraft:magenta_carpet': 'carpet 2', // magenta carpet
+    'minecraft:light_blue_carpet': 'carpet 3', // light blue carpet
+    'minecraft:yellow_carpet': 'carpet 4', // yellow carpet
+    'minecraft:lime_carpet': 'carpet 5', // lime carpet
+    'minecraft:pink_carpet': 'carpet 6', // pink carpet
+    'minecraft:gray_carpet': 'carpet 7', // gray carpet
+    'minecraft:light_gray_carpet': 'carpet 8', // light gray carpet
+    'minecraft:cyan_carpet': 'carpet 9', // cyan carpet
+    'minecraft:purple_carpet': 'carpet 10', // purple carpet
+    'minecraft:blue_carpet': 'carpet 11', // blue carpet
+    'minecraft:brown_carpet': 'carpet 12', // brown carpet
+    'minecraft:green_carpet': 'carpet 13', // green carpet
+    'minecraft:red_carpet': 'carpet 14', // red carpet
+    'minecraft:black_carpet': 'carpet 15', // black carpet
     
 
     // other stuffs
-    'minecraft:glow_lichen': 'minecraft:glow_lichen 1', // put it on the floor
-    'minecraft:cobweb': 'minecraft:web', // cobweb
-    'minecraft:grass_block': 'minecraft:grass' // grass block
+    'minecraft:glow_lichen': 'glow_lichen 1', // put it on the floor
+    'minecraft:cobweb': 'web', // cobweb
+    'minecraft:grass_block': 'grass' // grass block
 
 }
 
@@ -264,17 +264,17 @@ async function convert(file){
         })
 
         npcs.push(
-            `{ActorIdentifier:"minecraft:npc<>",SaveData:{InterativeText:"Â§lÂ§8Made with Â§c<3Â§8 by Â§rÂ§2mmccall0813#0943. Â§lÂ§6(${i+1}/${buttons.length})",Actions:"[`
+            `{ActorIdentifier:"npc",SaveData:{InterativeText:"Â§lÂ§8Made with Â§c<3Â§8 by Â§rÂ§2mmccall0813#0943. Â§lÂ§6(${i+1}/${buttons.length})",Actions:"[`
             + JSON.stringify(buttons[i]) +
-            `]",CustomName:"npc${i+1}",RawtextName:"npc${i+1}",Persistent:1b,Variant:19,identifier:"npc",Pos:[]},TicksLeftToStay:0}`
+            `]",CustomName:"npc${i+1}",RawtextName:"npc${i+1}",Variant:19,identifier:"npc",Pos:[]}}`
         )
     }
     // puts every npc into one movingblock
     let block = [];
     block.push(
-        `{Block:{name:"minecraft:moving_block",states:{},version:17959425},Count:1b,Damage:0s,Slot:<!SLOTPLACEHOLDER!>,Name:"minecraft:moving_block",WasPickedUp:0b,tag:{display:{Lore:["Â§rÂ§ePlace in the Â§lNorthwestÂ§rÂ§e corner of the build.","Â§eMade with Â§b<3Â§rÂ§e by mmccall0813", "Â§rÂ§lÂ§cImported from ${file.name}"],Name:"Â§eÂ§l(${i+1}/${buttons.length}) Â§rÂ§rMapart NPC Spawner"},ench:[{id:28s,lvl:1s}],movingBlock:{name:"minecraft:bee_nest"},movingEntity:{Occupants:[`
+        `{Count:1b,Name:"moving_block",tag:{display:{Lore:["Â§rÂ§ePlace in the Â§lNorthwestÂ§rÂ§e corner of the build.","Â§eMade with Â§b<3Â§rÂ§e by mmccall0813","Â§rÂ§lÂ§cImported from ${file.name}"],Name:"Â§eÂ§l(${i+1}/${buttons.length})Â§rÂ§rMapart NPC Spawner"},ench:[{id:28s,lvl:1s}],movingBlock:{name:"minecraft:bee_nest"},movingEntity:{Occupants:[`
         + npcs.join(",") +
-    `],id:"Beehive"},pistonPosX:0,pistonPosY:0,pistonPosZ:0}}`
+    `],id:"Beehive"}}}`
     );
 
     // puts everything into the textarea
@@ -326,7 +326,7 @@ function copy(button){
 
             setTimeout( () => {
                 button.innerText = "Copy"
-            }, 500)
+            }, 1000)
         }, 
         () => {
             // clipboard copy failed
